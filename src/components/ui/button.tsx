@@ -15,8 +15,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.15)]",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "bg-gradient-to-r from-[hsl(25,95%,53%)] to-[hsl(35,95%,55%)] text-white shadow-[0_8px_30px_-8px_hsl(var(--foreground)/0.12)] hover:shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.15)] hover:scale-[1.02] active:scale-[0.98]",
-        success: "bg-gradient-to-r from-[hsl(152,45%,45%)] to-[hsl(160,50%,50%)] text-white shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.15)] hover:shadow-[0_8px_30px_-8px_hsl(var(--foreground)/0.12)] active:scale-[0.98]",
+        hero: "bg-gradient-to-r from-[hsl(270,70%,55%)] to-[hsl(280,70%,60%)] text-white shadow-[0_8px_30px_-8px_hsl(var(--foreground)/0.12)] hover:shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.15)] hover:scale-[1.02] active:scale-[0.98]",
+        success: "bg-gradient-to-r from-[hsl(220,60%,50%)] to-[hsl(230,65%,55%)] text-white shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.15)] hover:shadow-[0_8px_30px_-8px_hsl(var(--foreground)/0.12)] active:scale-[0.98]",
       },
       size: {
         default: "h-11 px-5 py-2",
