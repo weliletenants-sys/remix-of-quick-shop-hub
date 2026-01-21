@@ -14,7 +14,7 @@ const RiderRegister = () => {
     email: "",
     phone: "",
     location: "",
-    licenseNumber: "",
+    numberPlate: "",
     vehicleRegistration: "",
     password: "",
     confirmPassword: "",
@@ -152,14 +152,14 @@ const RiderRegister = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="licenseNumber">Driver's License Number</Label>
+                <Label htmlFor="numberPlate">Number Plate</Label>
                 <div className="relative">
                   <FileText className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
-                    id="licenseNumber"
-                    name="licenseNumber"
-                    placeholder="License number"
-                    value={formData.licenseNumber}
+                    id="numberPlate"
+                    name="numberPlate"
+                    placeholder="e.g., UAA 123B"
+                    value={formData.numberPlate}
                     onChange={handleChange}
                     className="pl-10"
                   />
