@@ -93,7 +93,7 @@ const Cart = () => {
                     {item.name}
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    KSH {item.price} / {item.unit}
+                    UGSH {item.price} / {item.unit}
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
@@ -119,7 +119,7 @@ const Cart = () => {
                 </div>
                 <div className="text-right min-w-[80px]">
                   <p className="font-bold text-primary">
-                    KSH {item.price * item.quantity}
+                    UGSH {item.price * item.quantity}
                   </p>
                 </div>
                 <Button
@@ -163,15 +163,15 @@ const Cart = () => {
               <div className="space-y-3 border-t border-border pt-4 mb-6">
                 <div className="flex justify-between text-muted-foreground">
                   <span>Subtotal</span>
-                  <span>KSH {total}</span>
+                  <span>UGSH {total}</span>
                 </div>
                 <div className="flex justify-between text-muted-foreground">
                   <span>Delivery Fee</span>
-                  <span>KSH {deliveryFee}</span>
+                  <span>UGSH {deliveryFee}</span>
                 </div>
                 <div className="flex justify-between text-lg font-bold text-foreground pt-3 border-t border-border">
                   <span>Total</span>
-                  <span className="text-primary">KSH {grandTotal}</span>
+                  <span className="text-primary">UGSH {grandTotal}</span>
                 </div>
               </div>
 
