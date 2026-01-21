@@ -120,6 +120,27 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Rider CTA Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+              Are You a Boda Rider?
+            </h2>
+            <p className="text-muted-foreground mb-6">
+              Join our network of riders and earn money delivering orders. 
+              Get instant notifications for new deliveries in your area.
+            </p>
+            <Link to="/rider-register">
+              <Button size="lg" variant="outline">
+                Register as a Rider
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-border py-8">
         <div className="container text-center text-sm text-muted-foreground">
