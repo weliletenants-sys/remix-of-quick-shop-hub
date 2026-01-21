@@ -43,7 +43,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
           <div>
             <span className="text-lg font-bold text-primary">
-              KSH {product.price}
+              UGSH {product.price}
             </span>
             <span className="text-xs text-muted-foreground ml-1">
               /{product.unit}
