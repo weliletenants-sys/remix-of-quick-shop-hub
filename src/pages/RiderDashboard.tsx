@@ -11,8 +11,18 @@ import {
   CheckCircle2, 
   XCircle,
   Phone,
-  Navigation
+  Navigation,
+  Wallet,
+  TrendingUp
 } from "lucide-react";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface OrderNotification {
   id: string;
@@ -124,6 +134,10 @@ const RiderDashboard = () => {
   const activeOrders = orders.filter(o => o.status === "accepted" || o.status === "in_progress");
   const completedOrders = orders.filter(o => o.status === "delivered");
 
+  // Calculate commission (5% of each completed delivery)
+  const COMMISSION_RATE = 0.05;
+  const totalEarnings = completedOrders.reduce((sum, order) => sum + (order.total * COMMISSION_RATE), 0);
+
   const getDisplayOrders = () => {
     switch (activeTab) {
       case "new": return newOrders;
@@ -159,6 +173,27 @@ const RiderDashboard = () => {
             </div>
           </div>
 
+          {/* Earnings Card */}
+          <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-6 mb-6 text-primary-foreground shadow-card">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Wallet className="h-5 w-5" />
+                  <p className="text-sm opacity-90">Your Commission (5%)</p>
+                </div>
+                <p className="text-3xl font-bold">
+                  UGSH {totalEarnings.toLocaleString()}
+                </p>
+                <p className="text-sm opacity-75 mt-1">
+                  From {completedOrders.length} completed {completedOrders.length === 1 ? 'delivery' : 'deliveries'}
+                </p>
+              </div>
+              <div className="h-14 w-14 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                <TrendingUp className="h-7 w-7" />
+              </div>
+            </div>
+          </div>
+
           {/* Stats Cards */}
           <div className="grid grid-cols-3 gap-4 mb-8">
             <div className="bg-card rounded-xl p-4 shadow-card text-center">
@@ -174,6 +209,42 @@ const RiderDashboard = () => {
               <p className="text-sm text-muted-foreground">Completed</p>
             </div>
           </div>
+
+          {/* Commission Breakdown */}
+          {completedOrders.length > 0 && (
+            <div className="bg-card rounded-2xl p-5 shadow-card border border-border mb-6">
+              <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
+                <Wallet className="h-4 w-4 text-primary" />
+                Earnings Breakdown
+              </h3>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Order</TableHead>
+                    <TableHead>Order Total</TableHead>
+                    <TableHead className="text-right">Your Commission (5%)</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {completedOrders.map((order) => (
+                    <TableRow key={order.id}>
+                      <TableCell className="font-medium">{order.id}</TableCell>
+                      <TableCell>UGSH {order.total.toLocaleString()}</TableCell>
+                      <TableCell className="text-right text-primary font-semibold">
+                        UGSH {(order.total * COMMISSION_RATE).toLocaleString()}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                  <TableRow className="bg-muted/50 font-semibold">
+                    <TableCell colSpan={2}>Total Earnings</TableCell>
+                    <TableCell className="text-right text-primary">
+                      UGSH {totalEarnings.toLocaleString()}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          )}
 
           {/* Tab Navigation */}
           <div className="flex gap-2 mb-6">
