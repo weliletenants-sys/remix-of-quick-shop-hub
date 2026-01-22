@@ -75,12 +75,33 @@ const RiderRegister = () => {
       
       <main className="container py-8">
         <div className="max-w-md mx-auto">
+          {/* Returning Rider Banner */}
+          <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-5 mb-6 text-primary-foreground shadow-card">
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-full bg-primary-foreground/20 flex items-center justify-center flex-shrink-0">
+                <User className="h-6 w-6" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg">Already a Rider?</h3>
+                <p className="text-sm opacity-90">Go straight to your dashboard — no need to register again!</p>
+              </div>
+            </div>
+            <Button
+              variant="outline"
+              className="w-full mt-4 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+              onClick={() => navigate("/rider-dashboard")}
+            >
+              <ArrowRight className="h-4 w-4 mr-2" />
+              Open My Dashboard
+            </Button>
+          </div>
+
           <div className="text-center mb-8">
             <div className="h-16 w-16 rounded-2xl gradient-hero flex items-center justify-center mx-auto mb-4">
               <Bike className="h-8 w-8 text-primary-foreground" />
             </div>
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Become a Rider
+              New Rider? Register Here
             </h1>
             <p className="text-muted-foreground">
               Join SwiftDeliver and start earning with deliveries
@@ -90,19 +111,6 @@ const RiderRegister = () => {
                 ✓ One-time registration — sign up once, deliver forever!
               </p>
             </div>
-          </div>
-
-          <div className="text-center mb-4">
-            <p className="text-sm text-muted-foreground">
-              Already registered?{" "}
-              <button
-                type="button"
-                onClick={() => navigate("/rider-dashboard")}
-                className="text-primary font-medium hover:underline"
-              >
-                Go to your Dashboard
-              </button>
-            </p>
           </div>
 
           <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card">
@@ -251,8 +259,12 @@ const RiderRegister = () => {
 
             <p className="text-sm text-muted-foreground text-center mt-6">
               Already registered?{" "}
-              <button className="text-primary font-medium hover:underline">
-                Sign In
+              <button 
+                type="button"
+                onClick={() => navigate("/rider-dashboard")}
+                className="text-primary font-medium hover:underline"
+              >
+                Go to Dashboard
               </button>
             </p>
           </div>

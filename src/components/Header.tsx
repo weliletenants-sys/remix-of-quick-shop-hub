@@ -34,6 +34,14 @@ const Header = () => {
           >
             Shop
           </Link>
+          <Link
+            to="/rider-dashboard"
+            className={`text-sm font-medium transition-colors hover:text-primary ${
+              location.pathname === "/rider-dashboard" ? "text-primary" : "text-muted-foreground"
+            }`}
+          >
+            Rider Portal
+          </Link>
         </nav>
 
         <div className="flex items-center gap-3">
