@@ -85,6 +85,24 @@ const RiderRegister = () => {
             <p className="text-muted-foreground">
               Join SwiftDeliver and start earning with deliveries
             </p>
+            <div className="mt-4 bg-primary/10 border border-primary/20 rounded-lg p-3">
+              <p className="text-sm text-primary font-medium">
+                ✓ One-time registration — sign up once, deliver forever!
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center mb-4">
+            <p className="text-sm text-muted-foreground">
+              Already registered?{" "}
+              <button
+                type="button"
+                onClick={() => navigate("/rider-dashboard")}
+                className="text-primary font-medium hover:underline"
+              >
+                Go to your Dashboard
+              </button>
+            </p>
           </div>
 
           <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card">
