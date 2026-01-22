@@ -24,6 +24,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import WithdrawModal from "@/components/rider/WithdrawModal";
+import WithdrawalHistory, { WithdrawalTransaction } from "@/components/rider/WithdrawalHistory";
 
 interface OrderNotification {
   id: string;
@@ -92,9 +93,38 @@ const mockOrders: OrderNotification[] = [
   },
 ];
 
+// Mock withdrawal transactions
+const mockWithdrawals: WithdrawalTransaction[] = [
+  {
+    id: "WD-001",
+    amount: 15000,
+    provider: "mtn",
+    phoneNumber: "256 772 456 789",
+    status: "completed",
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+  },
+  {
+    id: "WD-002",
+    amount: 8500,
+    provider: "airtel",
+    phoneNumber: "256 701 234 567",
+    status: "completed",
+    createdAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 days ago
+  },
+  {
+    id: "WD-003",
+    amount: 3000,
+    provider: "mtn",
+    phoneNumber: "256 772 456 789",
+    status: "pending",
+    createdAt: new Date(Date.now() - 30 * 60 * 1000), // 30 mins ago
+  },
+];
+
 const RiderDashboard = () => {
   const [orders, setOrders] = useState<OrderNotification[]>(mockOrders);
   const [activeTab, setActiveTab] = useState<"new" | "active" | "completed">("new");
+  const [withdrawals] = useState<WithdrawalTransaction[]>(mockWithdrawals);
 
   const handleAcceptOrder = (orderId: string) => {
     setOrders(orders.map(order => 
@@ -247,6 +277,9 @@ const RiderDashboard = () => {
               </Table>
             </div>
           )}
+
+          {/* Withdrawal History */}
+          <WithdrawalHistory transactions={withdrawals} />
 
           {/* Tab Navigation */}
           <div className="flex gap-2 mb-6">
