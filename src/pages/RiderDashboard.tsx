@@ -23,6 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import WithdrawModal from "@/components/rider/WithdrawModal";
 
 interface OrderNotification {
   id: string;
@@ -175,7 +176,7 @@ const RiderDashboard = () => {
 
           {/* Earnings Card */}
           <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-6 mb-6 text-primary-foreground shadow-card">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-4">
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <Wallet className="h-5 w-5" />
@@ -192,6 +193,7 @@ const RiderDashboard = () => {
                 <TrendingUp className="h-7 w-7" />
               </div>
             </div>
+            <WithdrawModal availableBalance={totalEarnings} />
           </div>
 
           {/* Stats Cards */}
