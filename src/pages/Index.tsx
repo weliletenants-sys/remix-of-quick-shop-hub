@@ -33,9 +33,8 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent/90 via-background/80 to-background/70 z-10" />
-        {/* Background Image - Full page behind content */}
+      <section className="relative overflow-hidden">
+        {/* Background Image - Clear, no blur */}
         <div className="absolute inset-0 w-full h-full">
           <img 
             src={deliveryRider} 
@@ -43,31 +42,34 @@ const Index = () => {
             className="w-full h-full object-cover object-center"
           />
         </div>
-        <div className="container relative z-20 py-20 md:py-32">
-          <div className="max-w-3xl mx-auto text-center animate-slide-up">
-            <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-primary/10 text-primary">
-              🚀 Fast & Reliable Delivery
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-foreground mb-6 leading-tight">
-              Your Everyday Needs,{" "}
-              <span className="text-primary">Delivered Fast</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Order groceries, household items, and more from your favorite shops. 
-              Our trusted boda riders deliver straight to your door.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/register">
-                <Button size="xl" variant="hero">
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/shop">
-                <Button size="xl" variant="outline">
-                  Browse Items
-                </Button>
-              </Link>
+        <div className="container relative z-10 py-20 md:py-32">
+          {/* Card containing hero content */}
+          <div className="max-w-2xl mx-auto bg-card/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-elevated animate-slide-up">
+            <div className="text-center">
+              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-primary/10 text-primary">
+                🚀 Fast & Reliable Delivery
+              </span>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight">
+                Your Everyday Needs,{" "}
+                <span className="text-primary">Delivered Fast</span>
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+                Order groceries, household items, and more from your favorite shops. 
+                Our trusted boda riders deliver straight to your door.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/register">
+                  <Button size="xl" variant="hero">
+                    Get Started
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+                <Link to="/shop">
+                  <Button size="xl" variant="outline">
+                    Browse Items
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
