@@ -33,13 +33,13 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        {/* Background Image - Clear, no blur */}
-        <div className="absolute inset-0 w-full h-full">
+      <section className="relative overflow-hidden bg-[hsl(270_80%_92%)]">
+        {/* Background Image - Full rider visible */}
+        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
           <img 
             src={deliveryRider} 
             alt="Swift Delivery Rider" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-contain object-center max-h-[600px] md:max-h-none"
           />
         </div>
         <div className="container relative z-10 py-20 md:py-32">
