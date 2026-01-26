@@ -33,18 +33,18 @@ const Index = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent via-background to-background" />
-        {/* Background Image */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 md:opacity-50 pointer-events-none">
+      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-accent/90 via-background/80 to-background/70 z-10" />
+        {/* Background Image - Full page behind content */}
+        <div className="absolute inset-0 w-full h-full">
           <img 
             src={deliveryRider} 
             alt="Swift Delivery Rider" 
-            className="w-full h-full object-contain object-right"
+            className="w-full h-full object-cover object-center"
           />
         </div>
-        <div className="container relative py-20 md:py-32">
-          <div className="max-w-3xl mx-auto text-center md:text-left md:mx-0 animate-slide-up">
+        <div className="container relative z-20 py-20 md:py-32">
+          <div className="max-w-3xl mx-auto text-center animate-slide-up">
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-primary/10 text-primary">
               🚀 Fast & Reliable Delivery
             </span>
