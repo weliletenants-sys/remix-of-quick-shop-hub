@@ -39,7 +39,7 @@ const Index = () => {
           <img 
             src={deliveryRider} 
             alt="Swift Delivery Rider" 
-            className="w-full h-full object-contain object-center max-h-[600px] md:max-h-none"
+            className="w-full h-full object-fill"
           />
         </div>
         <div className="container relative z-10 py-20 md:py-32">
