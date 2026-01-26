@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Truck, Clock, Shield, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import deliveryRider from "@/assets/delivery-rider.png";
 
 const Index = () => {
   const features = [
@@ -34,8 +35,16 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-accent via-background to-background" />
+        {/* Background Image */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-30 md:opacity-50 pointer-events-none">
+          <img 
+            src={deliveryRider} 
+            alt="Swift Delivery Rider" 
+            className="w-full h-full object-contain object-right"
+          />
+        </div>
         <div className="container relative py-20 md:py-32">
-          <div className="max-w-3xl mx-auto text-center animate-slide-up">
+          <div className="max-w-3xl mx-auto text-center md:text-left md:mx-0 animate-slide-up">
             <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-primary/10 text-primary">
               🚀 Fast & Reliable Delivery
             </span>
