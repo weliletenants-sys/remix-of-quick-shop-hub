@@ -24,8 +24,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <div className="group relative bg-card rounded-2xl p-4 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
       <div className="flex flex-col h-full">
-        <div className="flex items-center justify-center h-24 mb-3 text-5xl">
-          {product.image}
+        <div className="flex items-center justify-center h-24 mb-3 overflow-hidden rounded-lg bg-muted/30">
+          <img 
+            src={product.image} 
+            alt={product.name}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              e.currentTarget.src = '/placeholder.svg';
+            }}
+          />
         </div>
         
         <div className="flex-1">
