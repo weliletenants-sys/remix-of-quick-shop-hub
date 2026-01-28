@@ -87,7 +87,14 @@ const Cart = () => {
                 key={item.id}
                 className="bg-card rounded-xl p-4 shadow-card flex items-center gap-4"
               >
-                <div className="text-4xl">{item.image}</div>
+                <div className="h-16 w-16 rounded-lg overflow-hidden bg-muted/30 flex-shrink-0">
+                  <img 
+                    src={item.image} 
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => { e.currentTarget.src = '/placeholder.svg'; }}
+                  />
+                </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="font-semibold text-foreground truncate">
                     {item.name}
