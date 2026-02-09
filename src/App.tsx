@@ -11,6 +11,8 @@ import Register from "./pages/Register";
 import RiderRegister from "./pages/RiderRegister";
 import RiderDashboard from "./pages/RiderDashboard";
 import ManagerDashboard from "./pages/ManagerDashboard";
+import BusinessRegister from "./pages/BusinessRegister";
+import BusinessDashboard from "./pages/BusinessDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/rider-register" element={<RiderRegister />} />
             <Route path="/rider-dashboard" element={<RiderDashboard />} />
             <Route path="/manager" element={<ManagerDashboard />} />
+            <Route path="/business-register" element={<BusinessRegister />} />
+            <Route path="/business-dashboard" element={<BusinessDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
