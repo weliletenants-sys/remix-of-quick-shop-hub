@@ -10,6 +10,7 @@ import Cart from "./pages/Cart";
 import Register from "./pages/Register";
 import RiderRegister from "./pages/RiderRegister";
 import RiderDashboard from "./pages/RiderDashboard";
+import ManagerDashboard from "./pages/ManagerDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/register" element={<Register />} />
             <Route path="/rider-register" element={<RiderRegister />} />
             <Route path="/rider-dashboard" element={<RiderDashboard />} />
+            <Route path="/manager" element={<ManagerDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
