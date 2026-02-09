@@ -1,4 +1,4 @@
-import { ShoppingCart, User, Truck, LayoutDashboard } from "lucide-react";
+import { ShoppingCart, User, Truck, Store } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { Link, useLocation } from "react-router-dom";
@@ -41,6 +41,14 @@ const Header = () => {
             }`}
           >
             Rider Portal
+          </Link>
+          <Link
+            to="/business-dashboard"
+            className={`text-sm font-medium transition-colors hover:text-primary ${
+              location.pathname === "/business-dashboard" ? "text-primary" : "text-muted-foreground"
+            }`}
+          >
+            Business
           </Link>
           <Link
             to="/manager"
