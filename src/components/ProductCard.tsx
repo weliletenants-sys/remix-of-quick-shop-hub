@@ -11,7 +11,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart, items, updateQuantity } = useCart();
   const [isAdding, setIsAdding] = useState(false);
-  
+
   const cartItem = items.find((item) => item.id === product.id);
   const quantity = cartItem?.quantity || 0;
 
@@ -22,70 +22,61 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="group relative bg-card rounded-2xl p-4 shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
-      <div className="flex flex-col h-full">
-        <div className="flex items-center justify-center h-24 mb-3 overflow-hidden rounded-lg bg-muted/30">
-          <img 
-            src={product.image} 
-            alt={product.name}
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.currentTarget.src = '/placeholder.svg';
-            }}
-          />
-        </div>
-        
-        <div className="flex-1">
-          <span className="inline-block px-2 py-0.5 text-xs font-medium rounded-full bg-accent text-accent-foreground mb-2">
-            {product.category}
-          </span>
-          <h3 className="font-semibold text-foreground mb-1 line-clamp-1">
-            {product.name}
-          </h3>
-          <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
-            {product.description}
-          </p>
-        </div>
+    <div className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1">
+      {/* Image */}
+      <div className="relative h-32 md:h-40 bg-muted/30 overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            e.currentTarget.src = "/placeholder.svg";
+          }}
+        />
+      </div>
 
-        <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
-          <div>
-            <span className="text-lg font-bold text-primary">
-              UGSH {product.price}
-            </span>
-            <span className="text-xs text-muted-foreground ml-1">
-              /{product.unit}
-            </span>
-          </div>
+      {/* Content */}
+      <div className="p-3 md:p-4">
+        <h3 className="font-semibold text-foreground text-sm line-clamp-1 mb-0.5">
+          {product.name}
+        </h3>
+        <p className="text-xs text-muted-foreground line-clamp-1 mb-2">
+          {product.description}
+        </p>
+
+        <div className="flex items-center justify-between">
+          <span className="text-base font-bold text-primary">
+            UGSH {product.price.toLocaleString()}
+          </span>
 
           {quantity === 0 ? (
             <Button
               size="sm"
-              variant="hero"
               onClick={handleAdd}
-              className={`transition-transform ${isAdding ? "scale-95" : ""}`}
+              className={`rounded-full h-8 px-3 text-xs gradient-hero text-primary-foreground border-0 transition-transform ${
+                isAdding ? "scale-95" : ""
+              }`}
             >
-              <Plus className="h-4 w-4" />
+              <Plus className="h-3.5 w-3.5 mr-1" />
               Add
             </Button>
           ) : (
-            <div className="flex items-center gap-2">
-              <Button
-                size="icon"
-                variant="outline"
-                className="h-8 w-8"
+            <div className="flex items-center gap-1.5">
+              <button
                 onClick={() => updateQuantity(product.id, quantity - 1)}
+                className="h-7 w-7 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-muted transition-colors"
               >
                 <Minus className="h-3 w-3" />
-              </Button>
-              <span className="w-6 text-center font-semibold">{quantity}</span>
-              <Button
-                size="icon"
-                variant="hero"
-                className="h-8 w-8"
+              </button>
+              <span className="w-5 text-center text-sm font-semibold">
+                {quantity}
+              </span>
+              <button
                 onClick={() => addToCart(product)}
+                className="h-7 w-7 rounded-full gradient-hero flex items-center justify-center text-primary-foreground"
               >
                 <Plus className="h-3 w-3" />
-              </Button>
+              </button>
             </div>
           )}
         </div>
