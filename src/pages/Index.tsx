@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Truck, Clock, Shield, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
+import BottomNav from "@/components/BottomNav";
 import deliveryRider from "@/assets/delivery-rider.png";
 
 const Index = () => {
@@ -9,98 +10,94 @@ const Index = () => {
     {
       icon: Truck,
       title: "Fast Delivery",
-      description: "Get your items delivered within 30 minutes by our reliable boda riders",
+      description: "Get items delivered within 30 minutes",
     },
     {
       icon: Clock,
       title: "24/7 Service",
-      description: "Order anytime, anywhere. We're always ready to serve you",
+      description: "Order anytime, we're always ready",
     },
     {
       icon: Shield,
       title: "Secure & Safe",
-      description: "Your items are handled with care and delivered safely",
+      description: "Items handled with care",
     },
     {
       icon: MapPin,
       title: "Wide Coverage",
-      description: "We deliver across the city to your doorstep",
+      description: "Delivering across the city",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
-      
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[hsl(270_80%_92%)]">
-        {/* Background Image - Full rider visible */}
-        <div className="absolute inset-0 w-full h-full flex items-center justify-center">
-          <img 
-            src={deliveryRider} 
-            alt="Swift Delivery Rider" 
-            className="w-full h-full object-fill"
-          />
-        </div>
-        <div className="container relative z-10 py-20 md:py-32">
-          {/* Card containing hero content */}
-          <div className="max-w-2xl mx-auto bg-card/95 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-elevated animate-slide-up">
-            <div className="text-center">
-              <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium rounded-full bg-primary/10 text-primary">
-                🚀 Fast & Reliable Delivery
-              </span>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight">
-                Your Everyday Needs,{" "}
-                <span className="text-primary">Delivered Fast</span>
+
+      {/* Hero Section - Orange gradient like the reference */}
+      <section className="relative overflow-hidden gradient-hero">
+        <div className="container relative z-10 py-12 md:py-24">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="text-center md:text-left animate-slide-up">
+              <h1 className="text-4xl md:text-6xl font-extrabold text-primary-foreground leading-tight mb-4">
+                Fastest Online{" "}
+                <span className="text-foreground/90">Food</span>{" "}
+                <span className="text-primary-foreground">Delivery</span>{" "}
+                Service
               </h1>
-              <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-                Order groceries, household items, and more from your favorite shops. 
-                Our trusted boda riders deliver straight to your door.
+              <p className="text-primary-foreground/80 text-base md:text-lg mb-8 max-w-md mx-auto md:mx-0">
+                We are the fastest and most reliable delivery service. Search for your
+                favourite food or items in your area.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/register">
-                  <Button size="xl" variant="hero">
-                    Get Started
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-                <Link to="/shop">
-                  <Button size="xl" variant="outline">
-                    Browse Items
-                  </Button>
-                </Link>
-              </div>
+              <Link to="/shop">
+                <Button
+                  size="xl"
+                  className="rounded-full bg-card text-foreground font-bold hover:bg-card/90 shadow-elevated text-base px-8"
+                >
+                  Get Started
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <img
+                src={deliveryRider}
+                alt="Swift Delivery Rider"
+                className="w-64 md:w-96 animate-float drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
+        {/* Decorative circles */}
+        <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-primary-foreground/10" />
+        <div className="absolute bottom-10 left-10 w-20 h-20 rounded-full bg-primary-foreground/10" />
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-muted/50">
+      <section className="py-12 md:py-20">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Why Choose SwiftDeliver?
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Why Choose Us?
             </h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">
-              We make ordering and delivery simple, fast, and reliable
+            <p className="text-muted-foreground text-sm">
+              Simple, fast, and reliable delivery
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {features.map((feature, index) => (
               <div
                 key={feature.title}
-                className="bg-card p-6 rounded-2xl shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1"
+                className="bg-card p-5 rounded-2xl shadow-card hover:shadow-elevated transition-all duration-300 hover:-translate-y-1 text-center"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="h-12 w-12 rounded-xl gradient-hero flex items-center justify-center mb-4">
+                <div className="h-12 w-12 rounded-2xl gradient-hero flex items-center justify-center mb-3 mx-auto">
                   <feature.icon className="h-6 w-6 text-primary-foreground" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-sm font-semibold text-foreground mb-1">
                   {feature.title}
                 </h3>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs text-muted-foreground">
                   {feature.description}
                 </p>
               </div>
@@ -110,40 +107,44 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20">
+      <section className="py-12">
         <div className="container">
           <div className="relative overflow-hidden rounded-3xl gradient-hero p-8 md:p-12">
             <div className="relative z-10 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+              <h2 className="text-2xl md:text-3xl font-bold text-primary-foreground mb-3">
                 Ready to Order?
               </h2>
-              <p className="text-primary-foreground/90 mb-8 max-w-xl mx-auto">
+              <p className="text-primary-foreground/80 mb-6 max-w-md mx-auto text-sm">
                 Register now and get your first delivery with priority service
               </p>
               <Link to="/register">
-                <Button size="xl" variant="secondary" className="shadow-elevated">
+                <Button
+                  size="lg"
+                  className="rounded-full bg-card text-foreground font-bold hover:bg-card/90 shadow-elevated"
+                >
                   Register Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
+            <div className="absolute top-4 right-4 w-24 h-24 rounded-full bg-primary-foreground/10" />
+            <div className="absolute bottom-4 left-4 w-16 h-16 rounded-full bg-primary-foreground/10" />
           </div>
         </div>
       </section>
 
-      {/* Rider CTA Section */}
-      <section className="py-16 bg-muted/30">
+      {/* Rider CTA */}
+      <section className="py-12 bg-muted/30">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+          <div className="max-w-lg mx-auto text-center">
+            <h2 className="text-xl md:text-2xl font-bold text-foreground mb-3">
               Are You a Boda Rider?
             </h2>
-            <p className="text-muted-foreground mb-6">
-              Join our network of riders and earn money delivering orders. 
-              Get instant notifications for new deliveries in your area.
+            <p className="text-muted-foreground text-sm mb-5">
+              Join our network of riders and earn money delivering orders.
             </p>
             <Link to="/rider-register">
-              <Button size="lg" variant="outline">
+              <Button size="lg" variant="outline" className="rounded-full">
                 Register as a Rider
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -153,11 +154,13 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border py-8">
-        <div className="container text-center text-sm text-muted-foreground">
+      <footer className="border-t border-border py-6">
+        <div className="container text-center text-xs text-muted-foreground">
           <p>© 2024 SwiftDeliver. Fast, reliable delivery service.</p>
         </div>
       </footer>
+
+      <BottomNav />
     </div>
   );
 };

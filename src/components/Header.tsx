@@ -1,4 +1,4 @@
-import { ShoppingCart, User, Truck, Store } from "lucide-react";
+import { ShoppingCart, User, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
 import { Link, useLocation } from "react-router-dom";
@@ -8,59 +8,44 @@ const Header = () => {
   const location = useLocation();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-card/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-card/95 backdrop-blur-md border-b border-border">
+      <div className="container flex h-14 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-hero">
-            <Truck className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-hero">
+            <span className="text-lg font-bold text-primary-foreground">S</span>
           </div>
-          <span className="text-xl font-bold text-foreground">SwiftDeliver</span>
+          <div className="hidden sm:block">
+            <span className="text-base font-bold text-foreground">SwiftDeliver</span>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+              <MapPin className="h-3 w-3" />
+              <span>Deliver to your area</span>
+            </div>
+          </div>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6">
-          <Link
-            to="/"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === "/" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Home
-          </Link>
-          <Link
-            to="/shop"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === "/shop" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Shop
-          </Link>
-          <Link
-            to="/rider-dashboard"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === "/rider-dashboard" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Rider Portal
-          </Link>
-          <Link
-            to="/business-dashboard"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === "/business-dashboard" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Business
-          </Link>
-          <Link
-            to="/manager"
-            className={`text-sm font-medium transition-colors hover:text-primary ${
-              location.pathname === "/manager" ? "text-primary" : "text-muted-foreground"
-            }`}
-          >
-            Manager
-          </Link>
+        <nav className="hidden md:flex items-center gap-5">
+          {[
+            { label: "Home", path: "/" },
+            { label: "Shop", path: "/shop" },
+            { label: "Rider Portal", path: "/rider-dashboard" },
+            { label: "Business", path: "/business-dashboard" },
+            { label: "Manager", path: "/manager" },
+          ].map((link) => (
+            <Link
+              key={link.path}
+              to={link.path}
+              className={`text-sm font-medium transition-colors hover:text-primary ${
+                location.pathname === link.path
+                  ? "text-primary"
+                  : "text-muted-foreground"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <Link to="/cart">
             <Button variant="ghost" size="icon" className="relative">
               <ShoppingCart className="h-5 w-5" />
@@ -72,9 +57,8 @@ const Header = () => {
             </Button>
           </Link>
           <Link to="/register">
-            <Button variant="outline" size="sm" className="hidden sm:flex">
-              <User className="h-4 w-4 mr-2" />
-              Register
+            <Button variant="ghost" size="icon" className="hidden sm:flex">
+              <User className="h-5 w-5" />
             </Button>
           </Link>
         </div>
