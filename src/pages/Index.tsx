@@ -3,7 +3,7 @@ import { ArrowRight, Truck, Clock, Shield, MapPin } from "lucide-react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
-import deliveryRider from "@/assets/delivery-rider.png";
+import groceriesHero from "@/assets/groceries-hero.jpg";
 
 const Index = () => {
   const features = [
@@ -33,43 +33,46 @@ const Index = () => {
     <div className="min-h-screen bg-background pb-20 md:pb-0">
       <Header />
 
-      {/* Hero Section - Orange gradient like the reference */}
-      <section className="relative overflow-hidden gradient-hero">
+      {/* Hero Section - Orange gradient with grocery image fading on left */}
+      <section className="relative overflow-hidden gradient-hero min-h-[400px] md:min-h-[500px]">
+        {/* Background image on the left, fading into gradient */}
+        <div className="absolute inset-0 w-1/2 md:w-[45%]">
+          <img
+            src={groceriesHero}
+            alt="Fresh groceries"
+            className="w-full h-full object-cover"
+          />
+          {/* Fade overlay from right */}
+          <div className="absolute inset-0 bg-gradient-to-l from-[hsl(18,95%,52%)] via-[hsl(18,95%,52%)/0.6] to-transparent" />
+        </div>
+
         <div className="container relative z-10 py-12 md:py-24">
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="text-center md:text-left animate-slide-up">
-              <h1 className="text-4xl md:text-6xl font-extrabold text-primary-foreground leading-tight mb-4">
-                Fastest Online{" "}
-                <span className="text-foreground/90">Food</span>{" "}
-                <span className="text-primary-foreground">Delivery</span>{" "}
-                Service
-              </h1>
-              <p className="text-primary-foreground/80 text-base md:text-lg mb-8 max-w-md mx-auto md:mx-0">
-                We are the fastest and most reliable delivery service. Search for your
-                favourite food or items in your area.
-              </p>
-              <Link to="/shop">
-                <Button
-                  size="xl"
-                  className="rounded-full bg-card text-foreground font-bold hover:bg-card/90 shadow-elevated text-base px-8"
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </div>
-            <div className="flex justify-center md:justify-end">
-              <img
-                src={deliveryRider}
-                alt="Swift Delivery Rider"
-                className="w-64 md:w-96 animate-float drop-shadow-2xl"
-              />
-            </div>
+          <div className="ml-auto max-w-lg text-center md:text-right animate-slide-up">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-primary-foreground leading-tight mb-4">
+              Fastest Online{" "}
+              <span className="text-foreground/90">Food</span>{" "}
+              <span className="text-primary-foreground">Delivery</span>{" "}
+              Service
+            </h1>
+            <p className="text-primary-foreground/80 text-base md:text-lg mb-8">
+              We are the fastest and most reliable delivery service. Search for your
+              favourite food or items in your area.
+            </p>
+            <Link to="/shop">
+              <Button
+                size="xl"
+                className="rounded-full bg-card text-foreground font-bold hover:bg-card/90 shadow-elevated text-base px-8"
+              >
+                Get Started
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
           </div>
         </div>
+
         {/* Decorative circles */}
         <div className="absolute top-10 right-10 w-32 h-32 rounded-full bg-primary-foreground/10" />
-        <div className="absolute bottom-10 left-10 w-20 h-20 rounded-full bg-primary-foreground/10" />
+        <div className="absolute bottom-10 right-20 w-20 h-20 rounded-full bg-primary-foreground/10" />
       </section>
 
       {/* Features Section */}
