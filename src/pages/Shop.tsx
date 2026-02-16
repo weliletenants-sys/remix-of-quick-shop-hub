@@ -2,6 +2,7 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import ProductCard from "@/components/ProductCard";
+import LocationPicker from "@/components/LocationPicker";
 import { products, categories } from "@/data/products";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { Input } from "@/components/ui/input";
 const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [location, setLocation] = useState("Kampala Central");
 
   const filteredProducts = products.filter((product) => {
     const matchesCategory =
@@ -42,7 +44,11 @@ const Shop = () => {
       <Header />
 
       <main className="container py-5">
-        {/* Promo Banner */}
+        {/* Location Picker */}
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-lg font-bold text-foreground">Deliver to</h1>
+          <LocationPicker selected={location} onSelect={setLocation} />
+        </div>
         <div className="relative overflow-hidden rounded-2xl gradient-hero p-5 mb-6">
           <div className="relative z-10">
             <p className="text-3xl font-extrabold text-primary-foreground mb-1">
